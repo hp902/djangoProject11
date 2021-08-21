@@ -1,0 +1,356 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+	<title>7classes: CDS</title>
+	<meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!----------------------------------------------------------------------------------------------->
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="css/bootstrap-theme.css" rel="stylesheet" />
+<style>
+	#gridcontainer { padding: 20px; }
+	.grid-row > div {
+		padding: 10px;
+		background-color: aliceblue;
+		margin: 5px 0;
+	}
+</style>
+</head>
+
+<!------style="background: linear-gradient(#09F4D0, #0B9BBB);width:200%; background-repeat: no-repeat; padding-bottom: 30px;"-------->
+<body style="background-color: red">
+<h1 style="background-color: yellow; width: 100%">CDScgbfc</h1>
+<div class="panel" style="text-align: center; width: 100% " >
+	<h1 class="panel-header" style="font-family: 'Rubik', sans-serif;text-shadow: 2px 2px 2px rgba(0,0,0,.5), 2px 2px 2px rgba(0,0,0,.4), 10px 10px 10px rgba(0,0,0,.1);
+background-color: white;  font-weight: bold;
+  ">Confidence Detection System</h1>
+	<div id="gridcontainer" >
+		<div class="row grid-row">
+			<h1 style="font-size: 45px;">
+
+	</h1>
+		</div>
+		<div class="row grid-row" style="border-radius: 10px;">
+			<div class="col-sm-6" style="text-align: center; background: none">
+               <!-- <div style="background-color: white; height: 350px;width: 450px; padding: 20px;border-radius: 10px;">-->
+                <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: white;height: 350px;width: 450px; padding: 20px;border-radius: 10px;" class="camera">
+    <video id="video">Video stream not available.</video>
+    <button id="startbutton" style="margin-top: -7px;  background: linear-gradient(#09F4D0, #0B9BBB);"><img style="height:23px;width: 23px;" src="https://www.freeiconspng.com/thumbs/movie-icon/movie-icon-2.png"></button>
+
+                </div>
+            </div>
+			<div class="col-sm-6" style="text-align: center;background:none;">
+<canvas id="canvas">
+  </canvas>
+
+              <img id="photo" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: white;height: 350px;width: 450px; padding: 20px;border-radius: 10px;" alt="The screen capture will appear in this box.">
+
+
+            </div>
+		</div>
+		<div class="row grid-row" style="">
+			<div class="col-sm-3" style="margin: auto; border-radius: 10px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <form action="/cds" method="POST"  enctype="multipart/form-data">
+          {% csrf_token %}
+<label for="image"></label>
+          <input style="margin: auto" type="file" name="image" id="image" required>
+    <br><br>
+    <h6 style="text-align: center">Choose the downloaded image!</h6>
+          <button type="submit" style="margin: auto" class="btn btn-primary">Check</button>
+
+
+        </form>
+            </div>
+
+		</div>
+	</div>
+</div>
+
+</body>
+<!----------------------------------------------------------------------------------------------->
+
+
+<!--
+<div class="contentarea">
+<div class="heading" style="background-color: ghostwhite; display:block;border-radius: 10px">
+	<h1 style="font-style: normal;margin-left: 10px; font-size: 45px;">
+		Confidence Detection System
+	</h1>
+</div>
+
+
+
+<div style="width: 100%;display: flex;margin-left: 200px;margin-top: 60px">
+    <div style="float: left;width: 50%;">
+
+  <div style="background-color: white" class="camera">
+    <video id="video">Video stream not available.</video>
+    <button id="startbutton" style="margin-top: -7px;  background: linear-gradient(#09F4D0, #0B9BBB);"><img style="height:23px;width: 23px;" src="https://www.freeiconspng.com/thumbs/movie-icon/movie-icon-2.png"></button>
+  </div>
+</div>
+    <div style="width: 50%;float: right;margin-left: 100px;">
+  <canvas id="canvas">
+  </canvas>
+  <div class="output">
+  <a download> <img id="photo" alt="The screen capture will appear in this box."></a>
+  </div>
+        </div>
+</div>
+
+
+<div style="background-color: white; border-radius: 20px;margin-left: 500px;" >
+<form action="/cds" method="POST"  enctype="multipart/form-data">
+          {% csrf_token %}
+<label for="image"></label>
+          <input type="file" name="image" id="image">
+    <br><br>
+    <h6 style="text-align: center">Choose the downloaded image!</h6>
+          <button type="submit" style="margin-left: 100px;margin-bottom: 10px;" class="btn btn-primary">Check</button>
+
+
+        </form>
+</div>
+
+-->
+
+<script>
+    function take_snapshot() {
+			// take snapshot and upload to server
+			document.getElementById('upload_results').innerHTML = '<h1>Uploading...</h1>';
+			webcam.snap();
+		}
+    var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var ox = canvas.width / 2;
+var oy = canvas.height / 2;
+ctx.font = "42px serif";
+ctx.textAlign = "center";
+ctx.textBaseline = "middle";
+ctx.fillStyle = "#800";
+ctx.fillRect(ox / 2, oy / 2, ox, oy);
+
+download_img = function(el) {
+  var imageURI = canvas.toDataURL("image/jpg");
+  const img_id = document.getElementById("download-img")
+    img_id.setAttribute("href",imageURI)
+  el.href = imageURI;
+};
+</script>
+
+
+</div>
+
+</html>
+<style>
+    #video {
+  border: 1px solid black;
+  box-shadow: 2px 2px 3px black;
+  width:400px;
+  height:300px;
+}
+
+#photo {
+
+  box-shadow: 2px 2px 3px black;
+  width:400px;
+  height:300px;
+}
+
+#canvas {
+  display:none;
+}
+
+.camera {
+  width: 400px;
+    height: 300px;
+  display:inline-block;
+}
+
+.output {
+  width: 400px;
+  display:inline-block;
+}
+
+#startbutton {
+  display:block;
+  position:relative;
+  margin-left:auto;
+
+  margin-right:auto;
+  bottom:32px;
+  /*background-color: rgba(0, 150, 0, 0.5);*/
+    background: white;
+    border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  color: rgba(255, 255, 255, 1.0);
+}
+
+.contentarea {
+  font-size: 16px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  width: 760px;
+}
+</style>
+<script>
+    (function() {
+  // The width and height of the captured photo. We will set the
+  // width to the value defined here, but the height will be
+  // calculated based on the aspect ratio of the input stream.
+
+  var width = 400;    // We will scale the photo width to this
+  var height = 0;     // This will be computed based on the input stream
+
+  // |streaming| indicates whether or not we're currently streaming
+  // video from the camera. Obviously, we start at false.
+  var streaming = false;
+
+  // The various HTML elements we need to configure or control. These
+  // will be set by the startup() function.
+
+  var video = null;
+  var canvas = null;
+  var photo = null;
+  var startbutton = null;
+
+  function startup() {
+    video = document.getElementById('video');
+    canvas = document.getElementById('canvas');
+    photo = document.getElementById('photo');
+    startbutton = document.getElementById('startbutton');
+console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+    navigator.mediaDevices.getUserMedia({video: true, audio: false})
+    .then(function(stream) {
+      video.srcObject = stream;
+      video.play();
+    })
+    .catch(function(err) {
+      console.log("An error occurred: " + err);
+    });
+
+    video.addEventListener('canplay', function(ev){
+      if (!streaming) {
+        height = video.videoHeight / (video.videoWidth/width);
+
+         if (isNaN(height)) {
+          height = width / (4/3);
+        }
+
+        video.setAttribute('width', width);
+        video.setAttribute('height', height);
+        canvas.setAttribute('width', width);
+        canvas.setAttribute('height', height);
+        streaming = true;
+      }
+    }, false);
+    startbutton.addEventListener('click', function(ev){
+      takepicture();
+      ev.preventDefault();
+    }, false);
+
+    clearphoto();
+  }
+
+  // Fill the photo with an indication that none has been
+  // captured.
+function clearphoto() {
+    var context = canvas.getContext('2d');
+    context.fillStyle = "#AAA";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+    var data = canvas.toDataURL('image/jpg');
+    photo.setAttribute('src', data);
+
+  }
+
+
+  // Capture a photo by fetching the current contents of the video
+  // and drawing it into a canvas, then converting that to a PNG
+  // format data URL. By drawing it on an offscreen canvas and then
+  // drawing that to the screen, we can change its size and/or apply
+  // other changes before drawing it.
+const imgBox = document.getElementById('photo')
+  function takepicture() {
+    var context = canvas.getContext('2d');
+    if (width && height) {
+      canvas.width = width;
+      canvas.height = height;
+      context.drawImage(video, 0, 0, width, height);
+
+        var data = canvas.toDataURL('image/jpeg');
+        photo.setAttribute('src', data);
+
+
+        var link = document.createElement('a');
+link.href = data;
+link.download = 'myImage.jpg';
+document.body.appendChild(link);
+link.click();
+        /*
+        $(document).ready(function (){
+    $(".btn").click(function () {
+        var img=document.getElementById('photo');
+        alert(img)
+
+        $.ajax({
+            url: 'raashi',
+            type: 'POST',
+            data: 'photo',
+            contentType: 'multipart/form-data',
+            ProcessData: false,
+            success: function (response){
+                $(".btn").text(response.seconds)
+            }
+        });
+        console.log("its me")
+    });
+    });*/
+    } else {
+
+      clearphoto();
+    }
+  }
+
+  // Set up our event listener to run the startup process
+  // once loading is complete.
+  window.addEventListener('load', startup, false);
+})();
+
+</script>
+<!--
+<script>
+    const fd = new FormData()
+    fd.append('photo', image.files[0])
+    $(document).ready(function (){
+    $(".btn").click(function (){
+        $.ajax({
+            url: 'raashi',
+            type: 'get',
+            data: {
+                button_text: $(this).text()
+            },
+
+            success: function (response){
+                $(".btn").text(response.seconds)
+            }
+        });
+    });
+    });
+</script>-->
