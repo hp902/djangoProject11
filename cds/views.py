@@ -80,6 +80,3 @@ def raashi(request):
     text = request.POST.get('photo')
     print("text = ", text)
     return render(request, 'confident.html', {})
-
-
-
